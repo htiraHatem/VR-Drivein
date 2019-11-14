@@ -55,29 +55,24 @@
         
         <a-curvedimage src="#concrete" height="30" radius="20" theta-length="360" position="0 0 0" rotation="0 100 0" scale="0.5 0.5 0.5">
             <a-box id="wall-1" position="0 0 0" height="30" width="39.92" color="red" rotation="0 90 0">
-            
-                <a-box id="door-1-front" position="10 0 -0.2" height="20" width="10" color="yellow" rotation="0 0 0"></a-box>
-                <a-box id="door-1-back" position="10 0 0.2" height="20" width="10" color="yellow" rotation="0 0 0"></a-box>
-                
-                <a-box id="door-2-front" position="-10 0 -0.2" height="20" width="10" color="yellow" rotation="0 0 0"></a-box>
-                <a-box id="door-2-back" position="-10 0 0.2" height="20" width="10" color="yellow" rotation="0 0 0"></a-box>
-            
+                <a-box id="door-3-front" position="10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
+                <a-box id="door-3-back" position="10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
+                <a-box id="door-4-front" position="-10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
+                <a-box id="door-2-back" position="-10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
             </a-box>
         
             <a-box id="wall-2" position="0 0 0" height="30" width="39.92" color="blue" rotation="0 0 0">
-                <a-box id="door-3-front" position="10 0 -0.2" height="20" width="10" color="yellow" rotation="0 0 0"></a-box>
-                
-                <a-box id="door-3-back" position="10 0 0.2" height="20" width="10" color="yellow" rotation="0 0 0"></a-box>
-                
-                <a-box id="door-4-front" position="-10 0 -0.2" height="20" width="10" color="yellow" rotation="0 0 0"></a-box>
-                <a-box id="door-2-back" position="-10 0 0.2" height="20" width="10" color="yellow" rotation="0 0 0"></a-box>
-            
+                <a-box id="door-3-front" position="10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
+                <a-box id="door-3-back" position="10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
+                <a-box id="door-4-front" position="-10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
+                <a-box id="door-2-back" position="-10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
             </a-box>
         
         </a-curvedimage>
         
         
-        <a-light type="point" intensity="1.5" color="white" position="0 5 0"></a-light>
+        <a-light type="point" intensity="1.5" color="white" position="4 1.25 -4"></a-light>
+        <a-light type="point" intensity="1.5" color="white" position="-4 1.25 4"></a-light>
 
         <a-plane position="0 0 0" rotation="-90 0 0" color="gray" width="100" height="100"></a-plane>
 
@@ -92,7 +87,6 @@
         <a-box class="videospheredisplay" position="4 1.25 4" color="lightyellow" rotation="-90 120 0" shadow>
             <a-sphere id="videosphereentity" position="0 0 1.13"  radius="0.5" rotation="90 0 0" src="#spherevidclip" videosphereexpand  shadow></a-sphere>
             <a-light type="point" intensity="0.5" color="blue" position="0 0.25 1.13"></a-light>
-
         </a-box>
 
         <a-box class="videospheredisplay"  position="-4 1.25 -4" color="lightblue" rotation="-90 60 0" shadow>
