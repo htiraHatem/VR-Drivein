@@ -3,6 +3,28 @@
 <head>
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.min.js"></script>
+    <script>
+        AFRAME.registerComponent('videosphereexpand', {
+    
+          init: function () {
+       
+             let videosource = document.querySelector('.spherevidclip');
+             let videosphere = document.querySelector("#videosphereentity");
+             let homeworldelements = document.querySelectorAll(".homeworld");
+       
+             let videosphereloader = () => {
+             videosource.play();        
+             videosphere.setAttribute("radius", "4200");
+             homeworldelements.forEach((homeworldelement) => {
+             homeworldelement.setAttribute("visible", false)})
+             }
+       
+             this.el.addEventListener('click', videosphereloader);
+               
+          }});
+         
+         
+    </script>
 </head>
 
 <body>
@@ -12,13 +34,13 @@
         <img id="wall" src="bricks.png">
         <img id="floor" src="parquet.png">
         <img id="sky" src="clouds.png">
+        <video id="spherevidclip" autoplay loop="true" src="https://cdn.glitch.com/96ab1f6e-16b9-43c1-9df3-fbe9b24a7490%2FTimelapse%20Video.mp4?1549921266764" crossorigin="anonymous"></video>
       </a-assets>
         <!-- <a-entity camera="active: true" look-controls wasd-controls position="0 0 2" data-aframe-default-camera></a-entity> -->
         
         <!--<a-camera position="-15 20 -15" rotation="-90 0 0"></a-camera>-->
         <a-light type="point" intensity="1.5" color="white" position="0 100 0"></a-light>
          
-        <a-entity camera="active: true" look-controls wasd-controls position="0 12 0" rotation="-90 00"></a-entity>
         
 <!--
         <a-entity id="rig" position="0 12 -10">
@@ -60,21 +82,21 @@
         <a-plane position="0 0 0" rotation="-90 0 0" color="gray" width="100" height="100"></a-plane>
 
         <a-box position="4 1.25 -4" color="lightblue" rotation="-90 120 0" shadow>
-            <a-sphere position="0 0 1.13" color="red" radius="0.5" shadow></a-sphere>
+            <a-sphere id="videosphereentity" position="0 0 1.13"  radius="0.5" rotation="90 0 0" src="#spherevidclip" videosphereexpand  shadow></a-sphere>
         </a-box>
 
         <a-box position="-4 1.25 4" color="purple" rotation="-90 120 0" shadow>
-            <a-sphere position="0 0 1.13" color="red" radius="0.5" shadow></a-sphere>
+            <a-sphere id="videosphereentity" position="0 0 1.13"  radius="0.5" rotation="90 0 0" src="#spherevidclip" videosphereexpand  shadow></a-sphere>
         </a-box>
 
-        <a-box position="4 1.25 4" color="lightyellow" rotation="-90 120 0" shadow>
-            <a-sphere position="0 0 1.13" color="red" radius="0.5" shadow></a-sphere>
+        <a-box class="videospheredisplay" position="4 1.25 4" color="lightyellow" rotation="-90 120 0" shadow>
+            <a-sphere id="videosphereentity" position="0 0 1.13"  radius="0.5" rotation="90 0 0" src="#spherevidclip" videosphereexpand  shadow></a-sphere>
             <a-light type="point" intensity="0.5" color="blue" position="0 0.25 1.13"></a-light>
 
         </a-box>
 
-        <a-box position="-4 1.25 -4" color="lightblue" rotation="-90 120 0" shadow>
-            <a-sphere position="0 0 1.13" color="red" radius="0.5" shadow></a-sphere>
+        <a-box class="videospheredisplay"  position="-4 1.25 -4" color="lightblue" rotation="-90 60 0" shadow>
+            <a-sphere id="videosphereentity" position="0 0 1.13"  radius="0.5" rotation="90 0 0" src="#spherevidclip" videosphereexpand  shadow></a-sphere>
         </a-box>
         
         <!-- light -->
