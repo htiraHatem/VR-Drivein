@@ -34,11 +34,19 @@
         <img id="wall" src="bricks.png">
         <img id="floor" src="parquet.png">
         <img id="sky" src="clouds.png">
+        <img id="bierkeller" src="res/bierkeller.png">
+        <img id="mensa" src="res/mensa.png">
+        <img id="zuckerstueck" src="res/zuckerstueck.png">
+            
+        <img id="rondo" src="res/rondo.png">
         <video id="spherevidclip" autoplay loop="true" src="https://cdn.glitch.com/96ab1f6e-16b9-43c1-9df3-fbe9b24a7490%2FTimelapse%20Video.mp4?1549921266764" crossorigin="anonymous"></video>
       </a-assets>
         <!-- <a-entity camera="active: true" look-controls wasd-controls position="0 0 2" data-aframe-default-camera></a-entity> -->
-        
-        <!--<a-camera position="-15 20 -15" rotation="-90 0 0"></a-camera>-->
+        w
+        <a-entity id="rig" position="25 10 0">
+          <a-entity id="camera" camera look-controls="acceleration:100" wasd-controls></a-entity>
+        </a-entity>
+
         <a-light type="point" intensity="1.5" color="white" position="0 100 0"></a-light>
          
         
@@ -53,7 +61,7 @@
         <!--<a-curvedimage src="#concrete" height="25" radius="20" theta-length="360"
                  rotation="0 100 0" scale="0.5 0.5 0.5"></a-curvedimage>-->
         
-        <a-curvedimage src="#concrete" height="30" radius="20" theta-length="360" position="0 0 0" rotation="0 100 0" scale="0.5 0.5 0.5">
+        <a-curvedimage src="#concrete" height="30" radius="20" theta-length="360" position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5">
             <a-box id="wall-1" position="0 0 0" height="30" width="39.92" color="red" rotation="0 90 0">
                 <a-box id="door-3-front" position="10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
                 <a-box id="door-3-back" position="10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
@@ -67,9 +75,16 @@
                 <a-box id="door-4-front" position="-10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
                 <a-box id="door-2-back" position="-10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
             </a-box>
-        
+            
         </a-curvedimage>
+    
+        <a-curvedimage src="#mensa" height="30" radius="20.1" theta-length="90" theta-start="359" position="0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
         
+        <a-curvedimage src="#bierkeller" height="30" radius="20.1" theta-length="90" theta-start="89" theta-end="180" position="0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
+        
+        <a-curvedimage src="#zuckerstueck" height="30" radius="20.1" theta-length="90" theta-start="178"  theta-end="272" position="-0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
+    
+        <a-curvedimage src="#rondo" height="30" 70dius="20.1" theta-length="90" theta-start="268" theta-end="360" position="-0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
         
         <a-light type="point" intensity="1.5" color="white" position="4 1.25 -4"></a-light>
         <a-light type="point" intensity="1.5" color="white" position="-4 1.25 4"></a-light>
