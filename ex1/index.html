@@ -50,7 +50,6 @@
         <!-- <a-entity camera="active: true" look-controls wasd-controls position="0 0 2" data-aframe-default-camera></a-entity> -->
         
       
-        <a-link href="room1.html" position="0.5 3 -4.0" rotation="0 40 0" image="#sky"></a-link>
 
         <a-camera ar-raycaster raycaster cursor="fuse:true"> </a-camera>
 
@@ -61,17 +60,33 @@
         
         <a-curvedimage src="#concrete" height="30" radius="20" theta-length="360" position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5">
             <a-box id="wall-1" position="0 0 0" height="30" width="39.92" color="red" rotation="0 90 0">
-                <a-box id="door-3-front" position="10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
-                <a-box id="door-3-back" position="10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
-                <a-box id="door-4-front" position="-10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
-                <a-box id="door-2-back" position="-10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
+                <a-box id="door-3-front" position="10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0">
+                    <a-link   position="0 3 -0.6" rotation="0 0 0" image="#sky"></a-link>
+                </a-box>
+                <a-box id="door-3-back" position="10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0">
+                    <a-link  position="0 3 0.6" rotation="0 0 0" image="#sky"></a-link>
+                </a-box>
+                <a-box id="door-4-front" position="-10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0">
+                    <a-link position="0 3 -0.6" rotation="0 0 0" image="#sky"></a-link>
+                </a-box>
+                <a-box id="door-2-back" position="-10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0">
+                    <a-link position="0 3 0.6" rotation="0 0 0" image="#sky"></a-link>
+                </a-box>
             </a-box>
         
             <a-box id="wall-2" position="0 0 0" height="30" width="39.92" color="blue" rotation="0 0 0">
-                <a-box id="door-3-front" position="10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
-                <a-box id="door-3-back" position="10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
-                <a-box id="door-4-front" position="-10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
-                <a-box id="door-2-back" position="-10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0"></a-box>
+                <a-box id="door-3-front" position="10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0">
+                    <a-link position="0 3 -0.6" rotation="0 0 0" image="#sky"></a-link>
+                </a-box>
+                <a-box id="door-3-back" position="10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0">
+                    <a-link position="0 3 0.6" rotation="0 0 0" image="#sky"></a-link>
+                </a-box>
+                <a-box id="door-4-front" position="-10 0 -0.2" height="10" width="2" color="yellow" rotation="0 0 0">
+                    <a-link position="0 3 -0.6" rotation="0 0 0" image="#sky"></a-link>
+                </a-box>
+                <a-box id="door-2-back" position="-10 0 0.2" height="10" width="2" color="yellow" rotation="0 0 0">
+                    <a-link position="0 3 0.6" rotation="0 0 0" image="#sky"></a-link>
+                </a-box>
             </a-box>
             
         </a-curvedimage>
