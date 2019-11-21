@@ -104,22 +104,69 @@
 
         <a-plane position="0 0 0" rotation="-90 0 0" color="gray" width="100" height="100"></a-plane>
 
-        <a-box position="4 1.25 -4" color="lightblue" rotation="-90 120 0" shadow>
+        <!-- <a-box position="4 0.25 -4" color="lightblue" rotation="-90 120 0" shadow>
             <a-sphere id="videosphereentity" position="0 0 1.13"  radius="0.5" rotation="90 0 0" src="#spherevidclip" videosphereexpand  shadow></a-sphere>
-        </a-box>
+        </a-box> -->
 
-        <a-box position="-4 1.25 4" color="purple" rotation="-90 120 0" shadow>
-            <a-sphere id="videosphereentity" position="0 0 1.13"  radius="0.5" rotation="90 0 0" src="#spherevidclip" videosphereexpand  shadow></a-sphere>
-        </a-box>
+        <a-entity position="5 0.25 -5" rotation="0 -80 0">
+            <a-box class="homeworld" color="black" rotation="0 35 0" width="1" height="2" depth="1" ></a-box>
+            <a-videosphere id="videosphereentity" position="0 1.8 0" radius=".7" src="#spherevidclip" videosphereexpand      
+            ></a-videosphere>
+            <a-plane id="videospherecaption" class="homeworld" position=".35 .7 .5" rotation="-15 35 0" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+            <a-plane id="videospherecaption" class="homeworld" position="-.5 .7 .3" rotation="345 -55 -360" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+            <a-plane id="videospherecaption" class="homeworld" position=".5 .7 -.3" rotation="-165 -55 180" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+         </a-entity>
+         
+        <a-entity position="-5 0.25 5" rotation="0 90 0">
+            <a-box class="homeworld" color="black" rotation="0 35 0" width="1" height="2" depth="1" ></a-box>
+            <a-videosphere id="videosphereentity" position="0 1.8 0" radius=".7" src="#spherevidclip" videosphereexpand      
+            ></a-videosphere>
+            <a-plane id="videospherecaption" class="homeworld" position=".35 .7 .5" rotation="-15 35 0" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+            <a-plane id="videospherecaption" class="homeworld" position="-.5 .7 .3" rotation="345 -55 -360" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+            <a-plane id="videospherecaption" class="homeworld" position=".5 .7 -.3" rotation="-165 -55 180" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+         </a-entity>
 
-        <a-box class="videospheredisplay" position="4 1.25 4" color="lightyellow" rotation="-90 120 0" shadow>
-            <a-sphere id="videosphereentity" position="0 0 1.13"  radius="0.5" rotation="90 0 0" src="#spherevidclip" videosphereexpand  shadow></a-sphere>
-            <a-light type="point" intensity="0.5" color="blue" position="0 0.25 1.13"></a-light>
-        </a-box>
+        <a-entity position="5 0.25 5" rotation="0 180 0">
+            <a-box class="homeworld" color="red" rotation="0 35 0" width="1" height="2" depth="1" ></a-box>
+            <a-videosphere id="videosphereentity" position="0 1.8 0" radius=".7" src="#spherevidclip" videosphereexpand      
+            ></a-videosphere>
+            <a-plane id="videospherecaption" class="homeworld" position=".35 .7 .5" rotation="-15 35 0" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+            <a-plane id="videospherecaption" class="homeworld" position="-.5 .7 .3" rotation="345 -55 -360" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+            <a-plane id="videospherecaption" class="homeworld" position=".5 .7 -.3" rotation="-165 -55 180" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+         </a-entity>
 
-        <a-box class="videospheredisplay"  position="-4 1.25 -4" color="lightblue" rotation="-90 60 0" shadow>
-            <a-sphere id="videosphereentity" position="0 0 1.13"  radius="0.5" rotation="90 0 0" src="#spherevidclip" videosphereexpand  shadow></a-sphere>
-        </a-box>
+         <a-entity position="-5 0.25 -5" rotation="0 360 0">
+            <a-box class="homeworld" color="blue" rotation="0 35 0" width="1" height="2" depth="1" ></a-box>
+            <a-videosphere id="videosphereentity" position="0 1.8 0" radius=".7" src="#spherevidclip" videosphereexpand      
+            ></a-videosphere>
+            <a-plane id="videospherecaption" class="homeworld" position=".35 .7 .5" rotation="-15 35 0" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+            <a-plane id="videospherecaption" class="homeworld" position="-.5 .7 .3" rotation="345 -55 -360" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+            <a-plane id="videospherecaption" class="homeworld" position=".5 .7 -.3" rotation="-165 -55 180" height=".6" width="1" color="#191817"
+            text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
+            ></a-plane>
+         </a-entity>
         
         <!-- light -->
 <!--        <a-entity id="lightSphere" geometry="primitive: sphere; radius: 0.2" material="color: #FFF; shader: flat" light="type: point" position="-2 3 4"
