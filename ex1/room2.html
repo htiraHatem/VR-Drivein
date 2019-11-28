@@ -33,6 +33,8 @@
 <body>
     <a-scene raycaster="far: 100; objects: [link];" cursor="rayOrigin: mouse" camera-position>
         <a-assets>
+        <img id="picasso" src="https://cdn.glitch.com/f2ee9d74-9726-4bed-9c30-2d49d6391dee%2FPablo_Picasso_-_Womanwith_a_Mandolin_-_Ermitage%20(1).jpg?1547166417213" crossorigin="anonymous"> 
+        <img id="concrete" src="concrete.png">
         <img id="concrete" src="concrete.png">
         <img id="wall" src="bricks.png">
         <img id="floor" src="parquet.png">
@@ -98,6 +100,31 @@
         <a-curvedimage src="#rondo" height="30" 70dius="20.1" theta-length="90" theta-start="268" theta-end="360" position="-0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
 
         <a-plane position="0 0 0" rotation="-90 0 0" color="gray" width="100" height="100"></a-plane>
+        <!--display-frame-->                           
+        <a-entity id="display" class="homeworld"  position="0.3 4.25 -2" rotation="0 90 0">
+                <a-plane id="displayframe" color="#191817" width="3" height="4"></a-plane>
+                <a-plane id="painting" src="#picasso" position="0 0 .1" width="2.5" height="3.5" ></a-plane>
+                <a-plane id="displaycaption" position="3.5 0 .01" height=".6" width="auto" color="#191817"
+                text="value: Pablo Picasso: Woman With a Mandolin. 1909; width: 3; align: center"></a-plane>
+        </a-entity>
+        <a-entity id="picassodisplay" class="homeworld"  position="-2.3 4.25 -0.3" rotation="0 180 0">
+                <a-plane id="displayframe" color="#191817" width="3" height="4"></a-plane>
+                <a-plane id="painting" src="#picasso" position="0 0 .1" width="2.5" height="3.5" ></a-plane>
+                <a-plane id="displaycaption" position="3.5 0 .01" height=".6" width="auto" color="#191817"
+                text="value: Pablo Picasso: Woman With a Mandolin. 1909; width: 3; align: center"></a-plane>
+        </a-entity>
+        <a-entity id="picassodisplay" class="homeworld"  position="-0.3 4.25 2.4" rotation="0 270 0">
+                <a-plane id="displayframe" color="#191817" width="3" height="4"></a-plane>
+                <a-plane id="painting" src="#picasso" position="0 0 .1" width="2.5" height="3.5" ></a-plane>
+                <a-plane id="displaycaption" position="3.5 0 .01" height=".6" width="auto" color="#191817"
+                text="value: Pablo Picasso: Woman With a Mandolin. 1909; width: 3; align: center"></a-plane>
+        </a-entity>
+        <a-entity id="picassodisplay" class="homeworld"  position="2.4 4.25 0.3" rotation="0 -360 0">
+                <a-plane id="displayframe" color="#191817" width="3" height="4"></a-plane>
+                <a-plane id="painting" src="#picasso" position="0 0 .1" width="2.5" height="3.5" ></a-plane>
+                <a-plane id="displaycaption" position="3.5 0 .01" height=".6" width="auto" color="#191817"
+                text="value: Pablo Picasso: Woman With a Mandolin. 1909; width: 3; align: center"></a-plane>
+        </a-entity>
 
 
         <a-entity position="5 0.25 -5" rotation="0 -80 0">
