@@ -2,43 +2,66 @@
 
 <head>
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-animation-component@^3.2.0/dist/aframe-animation-component.min.js"></script>
     <script src="link-controls.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
-<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
 
   <script>
-        AFRAME.registerComponent('videosphereexpand', {
+      AFRAME.registerComponent('videosphereexpand', {
     
-          init: function () {
-       
-             let videosource = document.querySelector('.spherevidclip');
-             let videosphere = document.querySelector("#videosphereentity");
-             let homeworldelements = document.querySelectorAll(".homeworld");
-       
-             let videosphereloader = () => {
-             videosource.play();        
-             videosphere.setAttribute("radius", "4200");
-             homeworldelements.forEach((homeworldelement) => {
-             homeworldelement.setAttribute("visible", false)})
-             }
-       
-             this.el.addEventListener('click', videosphereloader);
-               
-          }});
+    init: function () {
+ 
+       let videosource = document.querySelector('#spherevidclip');
+       let videosphere = document.querySelector("#videosphereentity");
+       let homeworldelements = document.querySelectorAll(".homeworld");
+ 
+       let videosphereloader = () => {
+       videosource.play();        
+       videosphere.setAttribute("radius", "4200");
+       homeworldelements.forEach((homeworldelement) => {
+       homeworldelement.setAttribute("visible", false)})
+       }
+ 
+       this.el.addEventListener('click', videosphereloader);
+         
+    }});
+    AFRAME.registerComponent('backhome', {
+ 
+    
+ init: function () {
+   
+    let homeworldelements = document.querySelectorAll(".homeworld");
+    let sky = document.querySelector("#sky");
+    let videosphere = document.querySelector("#videosphereentity");
+
+    
+    let gobackhome = () => {
+    sky.setAttribute("src", "#starsky");
+    videosphere.setAttribute("radius", ".7");
+    homeworldelements.forEach((homeworldelement) => {
+    homeworldelement.setAttribute("visible", true)})
+  }
+
+    this.el.addEventListener('click', gobackhome);
+      
+ }});
+   
 
     </script>
 </head>
 
 <body>
-    <a-scene raycaster="far: 100; objects: [link];" cursor="rayOrigin: mouse" camera-position>
+    <a-scene raycaster="far: 100; objects: [link];" cursor="rayOrigin: mouse">
         <a-assets>
+                <video id="spherevidclip" autoplay loop="true" src="https://cdn.glitch.com/96ab1f6e-16b9-43c1-9df3-fbe9b24a7490%2F360%20Timelapse.mp4?1549922819582" crossorigin="anonymous"> </video>
+                <video id="spherevidclip1" autoplay loop="true" src="https://cdn.glitch.com/96ab1f6e-16b9-43c1-9df3-fbe9b24a7490%2F360%20Timelapse.mp4?1549922819582" crossorigin="anonymous"> </video>
+
         <img id="picasso" src="https://cdn.glitch.com/f2ee9d74-9726-4bed-9c30-2d49d6391dee%2FPablo_Picasso_-_Womanwith_a_Mandolin_-_Ermitage%20(1).jpg?1547166417213" crossorigin="anonymous"> 
         <img id="concrete" src="concrete.png">   
         <img id="concrete" src="concrete.png">
         <img id="wall" src="bricks.png">
         <img id="floor" src="parquet.png">
         <img id="sky" src="clouds.png">
+        <img id="starsky" src="https://cdn.glitch.com/f2ee9d74-9726-4bed-9c30-2d49d6391dee%2Fstarry%20night.jpg?1547158907338" crossorigin="anonymous">
         <img id="bierkeller" src="res/bierkeller.png">
         <img id="mensa" src="res/mensa.png">
         <img id="zuckerstueck" src="res/zuckerstueck.png">
@@ -46,19 +69,20 @@
         <img id="rondo" src="res/rondo.png">
         <img id="wall1" src="wall1.jpg">
         <img id="thumbSunrise" src="https://cdn.aframe.io/link-traversal/thumbs/sunrise.png">
-        <video id="spherevidclip" autoplay loop="true" src="https://cdn.glitch.com/96ab1f6e-16b9-43c1-9df3-fbe9b24a7490%2FTimelapse%20Video.mp4?1549921266764" crossorigin="anonymous"></video>
       </a-assets>        
       
         <a-entity light="type: ambient; intensity: 0.7 ;"></a-entity>
+
         <!--Spotlight-->
-        <a-entity light="type: spot; target: #camera;intensity: 1; angle: 45 ;"></a-entity>
+        <a-entity light="type: spot; target: #camera;intensity: 1; angle: 45 ;" ></a-entity>
         <!--Camera with Rig-->
-        <a-entity id="rig">
-            <a-camera id="camera"></a-camera>
+        <a-entity id="rig"  cursor="rayOrigin: mouse; fuse: false;">
+            <a-camera id="camera" ></a-camera>
         </a-entity>
-        <a-sky src="#sky"></a-sky>
+
+        <a-sky id="sky" src="#sky"></a-sky>
         
-        <a-curvedimage src="#concrete" height="30" radius="20" theta-length="360" position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5">
+        <a-curvedimage class="homeworld" src="#concrete" height="30" radius="20" theta-length="360" position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5">
             <a-box id="wall-1" src="#wall1" position="0 0 0" height="30" width="39.92" rotation="0 90 0">
                 <a-box id="door-3-front"  src ="#door"  position="10 0 -0.2" height="12" width="3.5"  rotation="0 0 0">
                     <a-link  href="room3.html"  position="0 4 -0.6" rotation="0 0 0" image="#bierkeller"></a-link>
@@ -74,7 +98,7 @@
                 </a-box>
             </a-box>
         
-            <a-box id="wall-2" src="#wall1" position="0 0 0" height="30" width="39.92" rotation="0 0 0">
+            <!-- <a-box id="wall-2" src="#wall1" position="0 0 0" height="30" width="39.92" rotation="0 0 0">
                 <a-box id="door-1-front" src ="#door" position="10 0 -0.2" height="12" width="3.5"  rotation="0 0 0">
                     <a-link  href="room4.html" position="0 4.3 -0.6" rotation="0 1 0" image="#zuckerstueck"></a-link>
                 </a-box>
@@ -87,19 +111,19 @@
                 <a-box id="door-2-back" src ="#door" position="-10 0 0.2" height="12" width="3.5" rotation="0 0 0">
                     <a-link  href="room1.html" position="0 4 0.6" rotation="0 0 0" image="#mensa"></a-link>
                 </a-box>
-            </a-box>
+            </a-box> -->
             
         </a-curvedimage>
     
-        <a-curvedimage src="#mensa" height="30" radius="20.1" theta-length="90" theta-start="359" position="0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
+        <a-curvedimage class="homeworld" src="#mensa" height="30" radius="20.1" theta-length="90" theta-start="359" position="0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
         
-        <a-curvedimage src="#bierkeller" height="30" radius="20.1" theta-length="90" theta-start="89" theta-end="180" position="0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
+        <a-curvedimage class="homeworld" src="#bierkeller" height="30" radius="20.1" theta-length="90" theta-start="89" theta-end="180" position="0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
         
-        <a-curvedimage src="#zuckerstueck" height="30" radius="20.1" theta-length="90" theta-start="178"  theta-end="272" position="-0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
+        <a-curvedimage class="homeworld" src="#zuckerstueck" height="30" radius="20.1" theta-length="90" theta-start="178"  theta-end="272" position="-0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
     
-        <a-curvedimage src="#rondo" height="30" 70dius="20.1" theta-length="90" theta-start="268" theta-end="360" position="-0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
+        <a-curvedimage class="homeworld" src="#rondo" height="30" 70dius="20.1" theta-length="90" theta-start="268" theta-end="360" position="-0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
 
-        <a-plane position="0 0 0" rotation="-90 0 0" color="gray" width="100" height="100"></a-plane>
+        <a-plane class="homeworld"  position="0 0 0" rotation="-90 0 0" color="gray" width="100" height="100"></a-plane>
         <!--display-frame-->                           
         <a-entity id="display" class="homeworld"  position="0.3 4.25 -2" rotation="0 90 0">
             <a-plane id="displayframe" color="#191817" width="3" height="4"></a-plane>
@@ -142,7 +166,7 @@
             ></a-plane>
          </a-entity>
          
-        <a-entity position="-5 0.25 5" rotation="0 90 0">
+        <a-entity id="videospheredisplay" position="-5 0.25 5" rotation="0 90 0">
             <a-box class="homeworld" color="pink" rotation="0 35 0" width="1" height="2" depth="1" ></a-box>
             <a-videosphere id="videosphereentity" position="0 1.8 0" radius=".7" src="#spherevidclip" videosphereexpand      
             ></a-videosphere>
@@ -156,6 +180,17 @@
             text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
             ></a-plane>
          </a-entity>
+                 <!--displayssssss-frame-->                           
+
+         <!-- <a-entity id="videospheredisplay"  position="-6 1.25 5">
+                <a-box class="homeworld" color="black" rotation="0 35 0" width="1" height="2" depth=".5" ></a-box>
+                <a-videosphere id="videosphereentity" position="0 1.8 0" radius=".7" src="#spherevidclip" videosphereexpand      
+                ></a-videosphere>
+                <a-plane id="videospherecaption" class="homeworld" position=".5 .5 .5" rotation="-25 35 0" height=".6" width="auto" color="#191817"
+                text="value: This issssss a short, equirectangular videosphere; width: 2; wrapCount: 30; align: center"
+                ></a-plane>
+             </a-entity> -->
+                     <!--display-frame-->                           
 
         <a-entity position="5 0.25 5" rotation="0 180 0">
             <a-box class="homeworld" color="red" rotation="0 35 0" width="1" height="2" depth="1" ></a-box>
@@ -186,6 +221,9 @@
             text="value: This is a short, equirectangular videosphere; width: 1; wrapCount: 30; align: center"
             ></a-plane>
          </a-entity>
+
+         <a-circle id="homebutton" position="0 .1 0" rotation="-90 0 0" backhome></a-circle>
+
 
     </a-scene>
 </body>
