@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Synthesizer</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="http://www.html5canvastutorials.com/libraries/Three.js"></script>
+		<script>
+
+            //Setting the scene
+            var scene = new THREE.Scene();
+            scene.background = new THREE.Color( 0xffddff );
+            var camera = new THREE.PerspectiveCamera( 195, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+
+           
+
+function init() {
+    
+createMeshes();
+
+}
+
+//create materials for the different items
+ function createMaterials(){
+
+    var mbox = new THREE.MeshBasicMaterial({color: 0xaaaaaa, flatShading: true,});
+    mbox.color.convertSRGBToLinear();
+
+    var mregler = new THREE.MeshBasicMaterial({color: 0x97ffff, flatShading: true,});
+    mregler.color.convertSRGBToLinear();
+
+    var mbutton = new THREE.MeshNormalMaterial({flatShading: true});
+
+    var mfeld = new THREE.MeshBasicMaterial({color: 0x888888, flatShading: true,});
+    mfeld.color.convertSRGBToLinear();
+
+    var mStar = new THREE.MeshBasicMaterial({color: 0xff00ff}); 
+    mStar.color.convertSRGBToLinear();
+
+    
+
+
+return{
+
+    mbox,
+    mregler,
+    mbutton,
+    mfeld,
+    mStar,
+};
+
+}
+
+//create geometries for the different items
+
+function createGeometries(){
+    
+    //set high of regler/buttons
+    var gbox = new THREE.BoxBufferGeometry(300, 300, 1);
+
+    var gregler = new THREE.CylinderBufferGeometry(8,8,2,100);
+        gregler.rotateX(Math.PI/2);
+
+    var gbutton = new THREE.BoxBufferGeometry (15,10,2);
+
+    var shape = new THREE.Shape();
+    shape.moveTo(105, -120);
+    shape.lineTo(104, -116);
+    shape.lineTo(102, -119);
+    shape.lineTo(103, -115);
+    shape.lineTo(100, -118);
+    shape.lineTo(101, -114);
+    shape.lineTo(98, -116);
+    shape.lineTo(99, -112.5);
+    shape.lineTo(96, -113);
+    shape.lineTo(99, -111);
+    shape.lineTo(95, -110);
+    
+    //shape.lineTo(95, -110);
+    shape.lineTo(99, -109);
+    shape.lineTo(96, -107);
+    shape.lineTo(99, -107.5);
+    shape.lineTo(98, -104);
+    shape.lineTo(101, -106);
+    shape.lineTo(100, -102);
+    shape.lineTo(103, -105);
+    shape.lineTo(102, -101);
+    shape.lineTo(104, -104);
+    shape.lineTo(105, -100);
+    
+
+    //shape.lineTo(105, -100);
+    shape.lineTo(106, -104);
+    shape.lineTo(108, -101);
+    shape.lineTo(107, -105);
+    shape.lineTo(110, -102);
+    shape.lineTo(109, -106);
+    shape.lineTo(112, -104);
+    shape.lineTo(111, -107.5);
+    shape.lineTo(114, -107);
+    shape.lineTo(111, -109);
+    shape.lineTo(115, -110);
+
+
+    shape.lineTo(115, -110);
+    shape.lineTo(111, -111);
+    shape.lineTo(114, -113);
+    shape.lineTo(111, -112.5);
+    shape.lineTo(112, -116);
+    shape.lineTo(109, -114);
+    shape.lineTo(110, -118);
+    shape.lineTo(107, -115);
+    shape.lineTo(108, -119);
+    shape.lineTo(106, -116);
+    shape.lineTo(105, -120);
+    var gStar = new THREE.ExtrudeGeometry(shape, {depth: 1, bevelEnabled: false});
+
+return {
+    gbox,
+    gregler,
+    gbutton,
+    gStar,
+    
+};
+
+}
+
+//bring materials and geometries together (via method createM & createG) --> meshes
+
+function createMeshes(){
+    
+    var syn = new THREE.Group();
+    scene.add(syn);
+
+var materials = createMaterials();
+var geometries = createGeometries();
+
+var box = new THREE.Mesh(geometries.gbox, materials.mbox);
+box.position.set (0, 0, 0);
+
+var feldA = new THREE.Mesh(geometries.gbox, materials.mfeld);
+feldA.scale.set(0.85, 0.4, 1);
+feldA.position.set(0,-70,5);
+
+var feldB = new THREE.Mesh(geometries.gbox, materials.mfeld);
+feldB.scale.set(0.45, 0.45, 1);
+feldB.position.set(0, 63, 5);
+
+var feldC = new THREE.Mesh(geometries.gbox, materials.mfeld);
+feldC.scale.set(0.19, 0.45, 1);
+feldC.position.set(100, 63, 5);
+
+var feldD = new THREE.Mesh(geometries.gbox, materials.mfeld);
+feldD.scale.set(0.19, 0.45, 1);
+feldD.position.set(-100, 63, 5);
+
+var regler = new THREE.Mesh(geometries.gregler, materials.mregler);
+regler.position.set(105,-110,10);
+
+
+var regler2 = new THREE.Mesh(geometries.gregler, materials.mregler);
+regler2.position.set(105,8,10);
+
+var regler3 = new THREE.Mesh(geometries.gregler, materials.mregler);
+regler3.position.set(-80,8,10);
+
+var button = new THREE.Mesh(geometries.gbutton, materials.mbutton);
+button.position.set(48,8,10);
+
+var reglerEckig = new THREE.ExtrudeGeometry(geometries.gStar, materials.mStar);
+reglerEckig.position.set(111,-105,0);
+
+
+
+
+syn.add(
+    box,
+    feldA,
+    feldB,
+    feldC,
+    feldD,
+    regler,
+    regler2,
+    regler3,
+    button,
+    reglerEckig,
+    
+);
+
+}
+
+
+
+//set the amount of buttons/regler --> not working? 
+
+function setAmount(){
+    
+    var amount = 10, object, parent = regler;
+				for ( var i = 0; i < amount; i ++ ) {
+					object = new THREE.Mesh(geometries.gregler, materials.mregler);
+                    object.position.x = 2;
+                    
+                    
+					parent.add( object );
+					parent = object;
+                }
+
+            
+    
+                var amount = 10, object, parent = button;
+				for ( var i = 0; i < amount; i ++ ) {
+					object = new THREE.Mesh( geometries.gbutton, materials.mbutton);
+                    object.position.x = 2;
+                    
+                    
+					parent.add( object );
+					parent = object;
+                }
+
+                renderer = new THREE.WebGLRenderer( { antialias: true } );
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+
+ }
+
+
+ camera.position.z = 20;
+ camera.position.x = 100;
+ camera.position.y = -100;
+
+
+//animate the scene
+function animate() {
+	 requestAnimationFrame( animate );
+
+            
+	        renderer.render( scene, camera );
+            }
+            animate();
+            init();
+        
+        </script>
+	</body>
+</html>
