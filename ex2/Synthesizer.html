@@ -63,10 +63,10 @@ function createGeometries(){
 var gregler = new THREE.CylinderBufferGeometry(6,6,0.3,100);
     gregler.rotateX(Math.PI/2);
 
-var gbutton = new THREE.BoxBufferGeometry (15,10,0.3);
+var gbutton = new THREE.BoxBufferGeometry (12,12,0.3);
 
     var path = new THREE.Shape();
-    path.lineTo(105, -120);
+    path.moveTo(105, -120);
     path.lineTo(104, -116);
     path.lineTo(102, -119);
     path.lineTo(103, -115);
@@ -166,7 +166,7 @@ feldD.position.set(-100, 63, 5);
 
 
 var regler2 = new THREE.Mesh(geometries.gregler, materials.mregler);
-regler2.position.set(100,8,10);
+regler2.position.set(100,5,10);
 
 var regler3 = new THREE.Mesh(geometries.gregler, materials.mregler);
 regler3.position.set(-70,8,10);
@@ -176,21 +176,66 @@ button.position.set(48,8,10);
 
 var star = new THREE.Mesh( geometries.star, materials.mstar);
 
-//function clone() { //i = amount
-for ( var i = 0; i < 10; i ++ ) {
-var newStar = new THREE.Mesh(geometries.star, materials.mstar);
-newStar.position.set( i * 100, 0, 11 );
-//}
+// Amount of Star-Button
 
-for (var i = 0; i < 10; i++){
-    var newRegler = new THREE.Mesh(geometries.gregler, materials.mregler);
-    newStar.position.set(100, 8 + 2*i, 11);
+for ( var i = 0; i < 21; i ++ ) {
+    var newStar = new THREE.Mesh(geometries.star, materials.mstar); 
+    newStar.position.set((i*30)*-1, 0, 0 );
+    syn.add (newStar);
+
+    if (i > 7) {
+    newStar.position.set((240+(i*30)*-1), 30, 0);
+    syn.add (newStar);
+    }
+
+    if (i > 15) {
+    newStar.position.set((480+(i*30)*-1), 60, 0);
+    syn.add (newStar);
+    }
     
 }
 
+
+//Amount of Buttons
+
+for ( var i = 0; i < 11; i ++ ) {
+    var newButton = new THREE.Mesh(geometries.gbutton, materials.mbutton); 
+    
+    
+    if (i%2 == 0){
+    newButton.position.set((48 +(i*10)*-1), 8, 10);
+    syn.add(newButton);
+    }
+    
+    if (i%2 == 1){
+    newButton.position.set(48,(i*10), 10);
+    syn.add(newButton);
+    }
 }
 
 
+// Amount of Regler2
+for ( var i = 0; i < 11; i ++ ) {
+    var newRegler = new THREE.Mesh(geometries.gregler, materials.mregler);
+    newRegler.position.set(100, 5 + (i*20), 10 );
+    syn.add (newRegler);
+
+    if (i>5){
+        newRegler.position.set(80, (i*20)-115, 10 );  
+    }
+
+}
+
+for ( var i = 0; i < 8; i ++ ) {
+    var newRegler = new THREE.Mesh(geometries.gregler, materials.mregler);
+    newRegler.position.set(-70, 5 + (i*20), 10 );
+    syn.add (newRegler);
+
+    if (i>5){
+        newRegler.position.set(-90, (i*20)-115, 10 );  
+    }
+
+}
 
 
 syn.add(
@@ -202,13 +247,14 @@ syn.add(
     regler2,
     regler3,
     button,
-    star,
-    //newStar,
+    star,    
 );
 
 }
 
-camera.position.z = 40;
+
+camera.position.z = 45;
+//camera.position.y = 100;
 
 
 function animate() {
