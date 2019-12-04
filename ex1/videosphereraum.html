@@ -1,0 +1,249 @@
+<html> 
+  
+  <head>
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"> </script>
+
+    <script >
+     AFRAME.registerComponent('videosphereexpand', {
+    
+    init: function () {
+ 
+       let videosource = document.querySelector('#spherevidclip');
+       let videosphere = document.querySelector("#videosphereentity");
+       let homeworldelements = document.querySelectorAll(".homeworld");
+ 
+       let videosphereloader = () => {
+       videosource.play();        
+       videosphere.setAttribute("radius", "4200");
+
+       homeworldelements.forEach((homeworldelement) => {
+       homeworldelement.setAttribute("visible", false)})
+       }
+ 
+       this.el.addEventListener('click', videosphereloader);
+         
+    }});
+    AFRAME.registerComponent('backhome', {
+ 
+    
+ init: function () {
+   
+    let homeworldelements = document.querySelectorAll(".homeworld");
+    let sky = document.querySelector("#sky");
+    let videosphere = document.querySelector("#videosphereentity");
+
+    
+    let gobackhome = () => {
+    sky.setAttribute("src", "#starsky");
+    videosphere.setAttribute("radius", ".7");
+    homeworldelements.forEach((homeworldelement) => {
+    homeworldelement.setAttribute("visible", true)})
+  }
+
+    this.el.addEventListener('click', gobackhome);
+      
+ }});</script>
+  </head>
+  
+  <body>
+    
+     <a-scene>
+       
+       <a-assets>
+         <img id="starsky" src="https://cdn.glitch.com/f2ee9d74-9726-4bed-9c30-2d49d6391dee%2Fstarry%20night.jpg?1547158907338" crossorigin="anonymous">
+          <video id="spherevidclip" autoplay loop="true" src="https://cdn.glitch.com/96ab1f6e-16b9-43c1-9df3-fbe9b24a7490%2F360%20Timelapse.mp4?1549922819582" crossorigin="anonymous"> </video>
+          <video id="spherevidclip" autoplay loop="true"
+          src="https://cdn.glitch.com/96ab1f6e-16b9-43c1-9df3-fbe9b24a7490%2F360%20Timelapse.mp4?1549922819582"
+          crossorigin="anonymous"> </video>
+            <img id="wang_display" src="res/red.jpg" crossorigin="anonymous">
+            <img id="dom_display" src="res/dom_display.jpg" crossorigin="anonymous">
+            <img id="altes_display" src="res/AltesRathausBamberg_display.jpg" crossorigin="anonymous">
+            <img id="regnitz_display" src="res/regnitz_display.jpg" crossorigin="anonymous">
+            <img id="concrete" src="res/concrete.png">
+            <img id="floor" src="res/parquet.png">
+            <img id="sky" src="res/clouds.png">
+            <img id="bamberg" src="res/res/bamberg.png">
+            <img id="dom" src="res/dom.jpg">
+            <img id="rathaus" src="res/rathaus.png">
+            <img id="door" src="res/wood.jpg">
+            <img id="Skulpturengruppe" src="res/Skulpturengruppe.jpg">
+            <img id="wall1" src="res/wall1.jpg">
+        </a-assets>
+             
+     <a-entity id="camera" position="0 1.6 0" camera look-controls wasd-controls="acceleration:200">
+        <a-entity cursor="rayOrigin: mouse"></a-entity>
+      </a-entity>
+      
+      <a-entity laser-controls="hand:right"></a-entity>
+    
+
+      <a-sky id="sky" src="#starsky"></a-sky>
+      <a-curvedimage class="homeworld" src="#concrete" height="30" radius="20" theta-length="360" position="0 0 0"
+      rotation="0 0 0" scale="0.5 0.5 0.5">
+      <a-box id="wall-1" src="#wall1" position="0 0 0" height="30" width="39.92" rotation="0 90 0">
+          <a-box id="door-3-front" src="#door" position="10 0 -0.2" height="12" width="3.5" rotation="0 0 0">
+              <!-- <a-link href="room3.html" position="0 4 -0.6" rotation="0 0 0" image="#rathaus" title="Rathaus">
+              </a-link> -->
+          </a-box>
+          <a-box id="door-3-back" src="#door" position="10 0 0.2" height="12" width="3.5" rotation="0 0 0">
+              <!-- <a-link href="room1.html" position="0 4 0.6" rotation="0 0 0" image="#Skulpturengruppe"
+                  title="Skulpturengruppe"></a-link> -->
+          </a-box>
+          <a-box id="door-4-front" src="#door" position="-10 0 -0.2" height="12" width="3.5" rotation="0 0 0">
+              <!-- <a-link href="room4.html" position="0 4 -0.6" rotation="0 0 0" image="#bamberg"
+                  title="Bamberg stadt"></a-link> -->
+          </a-box>
+          <a-box id="door-4-back" src="#door" position="-10 0 0.2" height="12" width="3.5" rotation="0 0 0">
+              <!-- <a-link href="room2.html" position="0 4 0.6" rotation="0 0 0" image="#dom" title="Dom"></a-link> -->
+          </a-box>
+      </a-box>
+
+      <a-box id="wall-2" src="#wall1" position="0 0 0" height="30" width="39.92" rotation="0 0 0">
+          <a-box id="door-1-front" src="#door" position="10 0 -0.2" height="12" width="3.5" rotation="0 0 0">
+              <!-- <a-link href="room4.html" position="0 4.3 -0.6" rotation="0 1 0" image="#bamberg" title="Bamberg">
+              </a-link> -->
+          </a-box>
+          <a-box id="door-1-back" src="#door" position="10 0 0.2" height="12" width="3.5" rotation="0 0 0">
+              <!-- <a-link href="room2.html" position="0 4 0.6" rotation="0 0 0" image="#dom" title="Dom"></a-link> -->
+          </a-box>
+          <a-box id="door-2-front" src="#door" position="-10 0 -0.2" height="12" width="3.5" rotation="0 0 0">
+              <!-- <a-link href="room3.html" position="0 4 -0.6" rotation="0 0 0" image="#rathaus" title="Rathaus">
+              </a-link> -->
+          </a-box>
+          <a-box id="door-2-back" src="#door" position="-10 0 0.2" height="12" width="3.5" rotation="0 0 0">
+              <!-- <a-link href="room1.html" position="0 4 0.6" rotation="0 0 0" image="#Skulpturengruppe"
+                  title="Skulpturengruppe"></a-link> -->
+          </a-box>
+      </a-box>
+
+  </a-curvedimage>
+  <!--end-walls-->
+
+  <!--curvedimage-->
+
+  <a-curvedimage class="homeworld" src="#Skulpturengruppe" height="30" radius="19" theta-length="90"
+      theta-start="180" position="-0.3 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
+
+  <a-curvedimage class="homeworld" src="#bamberg" height="30" radius="19" theta-length="90" theta-start="0"
+      position="-0.3 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
+
+  <a-curvedimage class="homeworld" src="#dom" height="30" radius="19" theta-length="90" theta-start="90"
+      position="0.3 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
+
+  <a-curvedimage class="homeworld" src="#rathaus" height="30" radius="19" theta-length="90" theta-start="270"
+      position="-0.1 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"></a-curvedimage>
+
+  <a-plane class="homeworld" src="#floor" position="0 0 0" rotation="-90 0 0" color="gray" width="100"
+      height="100"></a-plane>
+  <!--end-curvedimage-->
+
+  <!--display-frame-->
+
+  <a-entity id="display" class="homeworld" position="0.3 4.25 -2" rotation="0 90 0">
+      <a-plane id="displayframe" color="#191817" width="3" height="4"></a-plane>
+      <a-plane id="painting" src="#dom_display" position="0 0 .1" width="2.5" height="3.5"></a-plane>
+      <a-plane id="displaycaption" position="3.5 0 .01" height="1.6" width="auto" color="#191817" text="value: 
+      Im Jahre 1007 gründeten Kaiser Heinrich II und seine Ehefrau Kunigunde das Bistum Bamberg.
+       In dem Zuge wurde ein Dom gebaut. Leider brannte dieser 1185 ab.
+       Daraufhin baute man einen neuen Dom, dieser wurde 1237 geweiht.; width: 3; align: center"></a-plane>
+  </a-entity>
+  <a-entity id="picassodisplay" class="homeworld" position="-2.3 4.25 -0.3" rotation="0 180 0">
+      <a-plane id="displayframe" color="#191817" width="3" height="4"></a-plane>
+      <a-plane id="painting" src="#wang_display" position="0 0 .1" width="2.5" height="3.5"></a-plane>
+      <a-plane id="displaycaption" position="3.5 0 .01" height="1.6" width="auto" color="#191817"
+          text="value:Wang Shugang (geb. 1960) studierte Bildhauerei an der Central Academy of Fine Arts in Peking.
+      Nach seinem Abschluss wurde er als Mitarbeiter des Stadtplanungsbüros verpflichtet, 
+      das er aber nach einem Jahr verließ, um als freier Künstler zu leben. 1989 emigrierte er nach Deutschland.
+       Über seine Zeit in Deutschland sagte er später, hier habe er gelernt, „was es heißt, einsam zu sein.“; width: 3; align: center"></a-plane>
+  </a-entity>
+  <a-entity id="picassodisplay" class="homeworld" position="-0.3 4.25 2.4" rotation="0 270 0">
+      <a-plane id="displayframe" color="#191817" width="3" height="4"></a-plane>
+      <a-plane id="painting" src="#altes_display" position="0 0 .1" width="2.5" height="3.5"></a-plane>
+      <a-plane id="displaycaption" position="3.5 0 .01" height="1.6" width="auto" color="#191817" text="value: Das Alte Rathaus in Bamberg ist eines der bedeutendsten Bauwerke, die die historische Innenstadt prägen. 
+      Es befindet sich zwischen Berg- und Inselstadt im linken Regnitzarm; width: 3; align: center"></a-plane>
+  </a-entity>
+  <a-entity id="picassodisplay" class="homeworld" position="2.4 4.25 0.3" rotation="0 -360 0">
+      <a-plane id="displayframe" color="#191817" width="3" height="4"></a-plane>
+      <a-plane id="painting" src="#regnitz_display" position="0 0 .1" width="2.5" height="3.5"></a-plane>
+      <a-plane id="displaycaption" position="3.5 0 .01" height="1.6" width="auto" color="#191817"
+          text="value: Die Regnitz ist ein knapp 59 Kilometer langer linksseitiger und südlicher Nebenfluss des Mains in Bayern; width: 3; align: center">
+      </a-plane>
+  </a-entity>
+
+  <!--end-display-frame-->
+
+  <!--videosphereentity-->
+
+  <a-entity position="5 0.25 -5" rotation="0 -80 0">
+      <a-box class="homeworld" color="black" rotation="0 35 0" width="1" height="2" depth="1"></a-box>
+      <a-videosphere id="videosphereentity" position="0 1.8 0" radius=".7" src="#spherevidclip" videosphereexpand>
+      </a-videosphere>
+      <a-plane id="videospherecaption" class="homeworld" position=".35 .7 .5" rotation="-15 35 0" height=".6"
+          width="1" color="#191817"
+          text="value: Die Bauzeit des Bamberger Doms dauerte 40 Jahre.; width: 1; wrapCount: 30; align: center">
+      </a-plane>
+      <a-plane id="videospherecaption" class="homeworld" position="-.5 .7 .3" rotation="345 -55 -360" height=".6"
+          width="1" color="#191817" text="value: Eröffnet: 6. Mai 1012.; width: 1; wrapCount: 30; align: center">
+      </a-plane>
+      <a-plane id="videospherecaption" class="homeworld" position=".5 .7 -.3" rotation="-165 -55 180" height=".6"
+          width="1" color="#191817"
+          text="value:Adresse: Domplatz, 96049 Bamberg.; width: 1; wrapCount: 30; align: center"></a-plane>
+  </a-entity>
+
+  <a-entity id="videospheredisplay" position="-5 0.25 5" rotation="0 90 0">
+      <a-box class="homeworld" color="pink" rotation="0 35 0" width="1" height="2" depth="1"></a-box>
+      <a-videosphere id="videosphereentity" position="0 1.8 0" radius=".7" src="#spherevidclip" videosphereexpand>
+      </a-videosphere>
+      <a-plane id="videospherecaption" class="homeworld" position=".35 .7 .5" rotation="-15 35 0" height=".6"
+          width="1" color="#191817"
+          text="value: Bevölkerung: 77.179 (2018); width: 1; wrapCount: 30; align: center"></a-plane>
+      <a-plane id="videospherecaption" class="homeworld" position="-.5 .7 .3" rotation="345 -55 -360" height=".6"
+          width="1" color="#191817"
+          text="value: Regierungsbezirk:	Oberfranken; width: 1; wrapCount: 30; align: center"></a-plane>
+      <a-plane id="videospherecaption" class="homeworld" position=".5 .7 -.3" rotation="-165 -55 180" height=".6"
+          width="1" color="#191817" text="value: Fläche:54,62 km2; width: 1; wrapCount: 30; align: center">
+      </a-plane>
+  </a-entity>
+
+  <a-entity position="5 0.25 5" rotation="0 180 0">
+      <a-box class="homeworld" color="red" rotation="0 35 0" width="1" height="2" depth="1"></a-box>
+      <a-videosphere id="videosphereentity" position="0 1.8 0" radius=".7" src="#spherevidclip" videosphereexpand>
+      </a-videosphere>
+      <a-plane id="videospherecaption" class="homeworld" position=".35 .7 .5" rotation="-15 35 0" height=".6"
+          width="1" color="#191817" text="value: Abfluss: 51,3 m³/s; width: 1; wrapCount: 30; align: center">
+      </a-plane>
+      <a-plane id="videospherecaption" class="homeworld" position="-.5 .7 .3" rotation="345 -55 -360" height=".6"
+          width="1" color="#191817" text="value: Länge: 64 km; width: 1; wrapCount: 30; align: center"></a-plane>
+      <a-plane id="videospherecaption" class="homeworld" position=".5 .7 -.3" rotation="-165 -55 180" height=".6"
+          width="1" color="#191817" text="value: Quelle: Franken; width: 1; wrapCount: 30; align: center">
+      </a-plane>
+  </a-entity>
+
+  <a-entity position="-5 0.25 -5" rotation="0 360 0">
+      <a-box class="homeworld" color="blue" rotation="0 35 0" width="1" height="2" depth="1"></a-box>
+      <a-videosphere id="videosphereentity" position="0 1.8 0" radius=".7" src="#spherevidclip" videosphereexpand>
+      </a-videosphere>
+      <a-plane id="videospherecaption" class="homeworld" position=".35 .7 .5" rotation="-15 35 0" height=".6"
+          width="1" color="#191817"
+          text="value:  Die acht hockenden Bronzegüsse sind ein beliebtes Fotomotiv.; width: 1; wrapCount: 30; align: center">
+      </a-plane>
+      <a-plane id="videospherecaption" class="homeworld" position="-.5 .7 .3" rotation="345 -55 -360" height=".6"
+          width="1" color="#191817"
+          text="value: Die acht hockenden Bronzegüsse sind ein beliebtes Fotomotiv.; width: 1; wrapCount: 30; align: center">
+      </a-plane>
+      <a-plane id="videospherecaption" class="homeworld" position=".5 .7 -.3" rotation="-165 -55 180" height=".6"
+          width="1" color="#191817"
+          text="value:  Die acht hockenden Bronzegüsse sind ein beliebtes Fotomotiv.; width: 1; wrapCount: 30; align: center">
+      </a-plane>
+  </a-entity>
+
+
+       
+       
+       <a-circle id="homebutton" position="0 .1 0" rotation="-90 0 0" backhome></a-circle>
+      
+     </a-scene>
+    
+  </body>
+  
+</html>
