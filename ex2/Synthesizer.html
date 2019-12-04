@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src=https://threejs.org/build/three.js></script>
+		<script>
+            var scene = new THREE.Scene();
+            scene.background = new THREE.Color( 0xffddff );
+            var camera = new THREE.PerspectiveCamera( 195, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+            var renderer = new THREE.WebGLRenderer();
+            renderer.setSize( window.innerWidth, window.innerHeight );
+            document.body.appendChild( renderer.domElement );
+
+
+
+function init() {
+
+createMeshes();
+
+}
+
+ function createMaterials(){
+
+    const mbox = new THREE.MeshBasicMaterial({color: 0xaaaaaa, flatShading: true,});
+    mbox.color.convertSRGBToLinear();
+
+    const mregler = new THREE.MeshBasicMaterial({color: 0x97ffff, flatShading: true,});
+    mregler.color.convertSRGBToLinear();
+
+    const mbutton = new THREE.MeshNormalMaterial({flatShading: true});
+    //mbutton.color.convertSRGBToLinear();
+
+    const mfeld = new THREE.MeshBasicMaterial({color: 0x888888, flatShading: true,});
+    mfeld.color.convertSRGBToLinear();
+
+    const mstar = new THREE.MeshBasicMaterial({color: 0xFFCCFF, flatShading: true,});
+    mstar.color.convertSRGBToLinear();
+
+
+return{
+
+    mbox,
+    mregler,
+    mbutton,
+    mfeld,
+    mstar,
+};
+
+}
+
+function createGeometries(){
+   //set high of regler/buttons
+   var gbox = new THREE.BoxBufferGeometry(300, 300, 1);
+
+var gregler = new THREE.CylinderBufferGeometry(6,6,0.3,100);
+    gregler.rotateX(Math.PI/2);
+
+var gbutton = new THREE.BoxBufferGeometry (12,12,0.3);
+
+    var path = new THREE.Shape();
+    path.moveTo(105, -120);
+    path.lineTo(104, -116);
+    path.lineTo(102, -119);
+    path.lineTo(103, -115);
+    path.lineTo(100, -118);
+    path.lineTo(101, -114);
+    path.lineTo(98, -116);
+    path.lineTo(99, -112.5);
+    path.lineTo(96, -113);
+    path.lineTo(99, -111);
+    path.lineTo(95, -110);
+    
+    //path.lineTo(95, -110);
+    path.lineTo(99, -109);
+    path.lineTo(96, -107);
+    path.lineTo(99, -107.5);
+    path.lineTo(98, -104);
+    path.lineTo(101, -106);
+    path.lineTo(100, -102);
+    path.lineTo(103, -105);
+    path.lineTo(102, -101);
+    path.lineTo(104, -104);
+    path.lineTo(105, -100);
+    
+
+    //path.lineTo(105, -100);
+    path.lineTo(106, -104);
+    path.lineTo(108, -101);
+    path.lineTo(107, -105);
+    path.lineTo(110, -102);
+    path.lineTo(109, -106);
+    path.lineTo(112, -104);
+    path.lineTo(111, -107.5);
+    path.lineTo(114, -107);
+    path.lineTo(111, -109);
+    path.lineTo(115, -110);
+
+
+    path.lineTo(115, -110);
+    path.lineTo(111, -111);
+    path.lineTo(114, -113);
+    path.lineTo(111, -112.5);
+    path.lineTo(112, -116);
+    path.lineTo(109, -114);
+    path.lineTo(110, -118);
+    path.lineTo(107, -115);
+    path.lineTo(108, -119);
+    path.lineTo(106, -116);
+    path.lineTo(105, -120);
+   
+    var extrudeSettings = {depth: 5.5, bevelEnabled: false};
+    var star = new THREE.ExtrudeBufferGeometry(path, extrudeSettings);
+
+    //shape
+
+
+
+return {
+    gbox,
+    gregler,
+    gbutton,
+    star,
+};
+
+}
+
+//bring materials and geometries together (via method createM & createG) --> meshes
+
+function createMeshes(){
+    
+    var syn = new THREE.Group();
+    scene.add(syn);
+
+var materials = createMaterials();
+var geometries = createGeometries();
+
+var box = new THREE.Mesh(geometries.gbox, materials.mbox);
+box.position.set (0, 0, 0);
+
+var feldA = new THREE.Mesh(geometries.gbox, materials.mfeld);
+feldA.scale.set(0.85, 0.4, 1);
+feldA.position.set(0,-70,5);
+
+var feldB = new THREE.Mesh(geometries.gbox, materials.mfeld);
+feldB.scale.set(0.45, 0.45, 1);
+feldB.position.set(0, 63, 5);
+
+var feldC = new THREE.Mesh(geometries.gbox, materials.mfeld);
+feldC.scale.set(0.19, 0.45, 1);
+feldC.position.set(100, 63, 5);
+
+var feldD = new THREE.Mesh(geometries.gbox, materials.mfeld);
+feldD.scale.set(0.19, 0.45, 1);
+feldD.position.set(-100, 63, 5);
+
+//var regler = new THREE.Mesh(geometries.gregler, materials.mregler);
+//regler.position.set(105,-110,10);
+
+
+var regler2 = new THREE.Mesh(geometries.gregler, materials.mregler);
+regler2.position.set(100,5,10);
+
+var regler3 = new THREE.Mesh(geometries.gregler, materials.mregler);
+regler3.position.set(-70,8,10);
+
+var button = new THREE.Mesh(geometries.gbutton, materials.mbutton);
+button.position.set(48,8,10);
+
+var star = new THREE.Mesh( geometries.star, materials.mstar);
+
+// Amount of Star-Button
+
+for ( var i = 0; i < 21; i ++ ) {
+    var newStar = new THREE.Mesh(geometries.star, materials.mstar); 
+    newStar.position.set((i*30)*-1, 0, 0 );
+    syn.add (newStar);
+
+    if (i > 7) {
+    newStar.position.set((240+(i*30)*-1), 30, 0);
+    syn.add (newStar);
+    }
+
+    if (i > 15) {
+    newStar.position.set((480+(i*30)*-1), 60, 0);
+    syn.add (newStar);
+    }
+    
+}
+
+
+//Amount of Buttons
+
+for ( var i = 0; i < 11; i ++ ) {
+    var newButton = new THREE.Mesh(geometries.gbutton, materials.mbutton); 
+    
+    
+    if (i%2 == 0){
+    newButton.position.set((48 +(i*10)*-1), 8, 10);
+    syn.add(newButton);
+    }
+    
+    if (i%2 == 1){
+    newButton.position.set(48,(i*10), 10);
+    syn.add(newButton);
+    }
+}
+
+
+// Amount of Regler2
+for ( var i = 0; i < 11; i ++ ) {
+    var newRegler = new THREE.Mesh(geometries.gregler, materials.mregler);
+    newRegler.position.set(100, 5 + (i*20), 10 );
+    syn.add (newRegler);
+
+    if (i>5){
+        newRegler.position.set(80, (i*20)-115, 10 );  
+    }
+
+}
+
+for ( var i = 0; i < 8; i ++ ) {
+    var newRegler = new THREE.Mesh(geometries.gregler, materials.mregler);
+    newRegler.position.set(-70, 5 + (i*20), 10 );
+    syn.add (newRegler);
+
+    if (i>5){
+        newRegler.position.set(-90, (i*20)-115, 10 );  
+    }
+
+}
+
+
+syn.add(
+    box,
+    feldA,
+    feldB,
+    feldC,
+    feldD,
+    regler2,
+    regler3,
+    button,
+    star,    
+);
+
+}
+
+
+camera.position.z = 45;
+//camera.position.y = 100;
+
+
+function animate() {
+	 requestAnimationFrame( animate );
+     renderer.render(scene, camera);
+    }
+
+
+            animate();
+            init();
+           
+        </script>
+	</body>
+</html>
